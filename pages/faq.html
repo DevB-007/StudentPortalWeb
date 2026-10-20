@@ -11,17 +11,25 @@
 </head>
 
 <body>
-
     <a href="#main-content" class="skip-link" style="position: absolute; left: -9999px;">Skip to main content</a>
+
+    <div id="notification-banner" class="banner">
+        <span>Welcome to the new StudentHub portal! Registration is now open.</span>
+        <button id="close-banner" aria-label="Close notification">×</button>
+    </div>
 
     <header>
         <div class="logo">
             <img src="../assets/images/logo.png" alt="StudentHub Logo" width="150">
         </div>
+        
+        <button class="hamburger" id="hamburger-menu" aria-label="Toggle navigation">
+            ☰
+        </button>
 
         <nav aria-label="Main Navigation">
             <ul>
-                <li><a href="home.html" aria-current="page">Home</a></li>
+                <li><a href="home.html">Home</a></li>
                 <li><a href="events.html">Campus Events</a></li>
                 <li><a href="directory.html">Student Directory</a></li>
                 <li><a href="faq.html">FAQ / Help</a></li>
@@ -39,7 +47,17 @@
 
         <section class="content-section" aria-labelledby="faq-list">
             <h2 id="faq-list">Frequently Asked Questions</h2>
-            <p>Collapsible interactive FAQ items will be built here.</p>
+
+            <div class="faq-item">
+                <div class="faq-question">How do I register for an event?</div>
+                <div class="faq-answer">Navigate to the Campus Events page and click the "Register for an Event" button
+                    to fill out the form.</div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">Who can access the Admin Panel?</div>
+                <div class="faq-answer">Only users with administrator privileges can access the Admin Panel.</div>
+            </div>
         </section>
 
     </main>

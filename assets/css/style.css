@@ -114,7 +114,7 @@ input, select, textarea {
 
 footer {
     background-color: #222222;
-    color: var(--white);
+    color: #ffffff; /* Forced white to override dark mode variable */
     padding: 2rem;
     text-align: center;
     margin-top: auto;
@@ -124,6 +124,10 @@ footer nav ul {
     flex-direction: row;
     justify-content: center;
     margin-top: 1rem;
+}
+
+footer a {
+    color: #ffffff; /* Forces footer links to be white */
 }
 
 @media (min-width: 768px) {
@@ -155,5 +159,80 @@ footer nav ul {
     form {
         max-width: 600px;
         margin: 1rem auto;
+    }
+}
+
+body.dark-mode {
+    --bg-light: #121212;
+    --text-main: #e0e0e0;
+    --white: #1e1e1e;
+    --border: #333333;
+}
+
+.faq-question {
+    background-color: var(--primary);
+    color: #ffffff;
+    padding: 1rem;
+    cursor: pointer;
+    border-radius: 4px;
+    margin-top: 1rem;
+    font-weight: bold;
+}
+
+.faq-answer {
+    display: none;
+    padding: 1rem;
+    background-color: var(--bg-light);
+    border: 1px solid var(--border);
+    border-top: none;
+    border-radius: 0 0 4px 4px;
+}
+
+.banner {
+    background-color: #ff9800;
+    color: #ffffff;
+    text-align: center;
+    padding: 0.5rem 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    font-weight: bold;
+}
+
+#close-banner {
+    background: none;
+    border: none;
+    color: #ffffff;
+    font-size: 1.5rem;
+    cursor: pointer;
+    line-height: 1;
+}
+
+.hamburger {
+    display: block;
+    background: none;
+    border: none;
+    color: var(--white);
+    font-size: 2rem;
+    cursor: pointer;
+}
+
+nav ul {
+    display: none;
+    width: 100%;
+}
+
+nav ul.show {
+    display: flex;
+}
+
+@media (min-width: 768px) {
+    .hamburger {
+        display: none;
+    }
+    
+    nav ul {
+        display: flex;
     }
 }
