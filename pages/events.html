@@ -22,7 +22,7 @@
         <div class="logo">
             <img src="../assets/images/logo.png" alt="StudentHub Logo" width="150">
         </div>
-        
+
         <button class="hamburger" id="hamburger-menu" aria-label="Toggle navigation">
             ☰
         </button>
@@ -47,9 +47,27 @@
 
         <section class="content-section" aria-labelledby="event-gallery">
             <h2 id="event-gallery">Upcoming Events</h2>
-            <p>Event posters and details will be rendered here dynamically.</p>
-            <a href="event-register.html" class="btn-register">Register for an Event</a>
+
+            <div style="display: flex; gap: 1rem; margin-bottom: 1.5rem; flex-wrap: wrap;">
+                <input type="text" id="searchInput" placeholder="Search events..." style="flex: 1; min-width: 200px;">
+                <select id="categoryFilter" style="width: auto;">
+                    <option value="All">All Categories</option>
+                    <option value="Technology">Technology</option>
+                    <option value="Sports">Sports</option>
+                    <option value="Cultural">Cultural</option>
+                </select>
+            </div>
+
+            <div id="loadingState">Loading events...</div>
+            <div id="errorState" class="error-msg"></div>
+
+            <div id="eventsContainer" class="event-gallery"></div>
+
+            <div id="paginationControls" style="display: flex; gap: 0.5rem; justify-content: center; margin-top: 2rem;">
+            </div>
         </section>
+
+        <script src="../assets/js/fetchData.js"></script>
 
     </main>
 
