@@ -22,7 +22,7 @@
         <div class="logo">
             <img src="../assets/images/logo.png" alt="StudentHub Logo" width="150">
         </div>
-        
+
         <button class="hamburger" id="hamburger-menu" aria-label="Toggle navigation">
             ☰
         </button>
@@ -47,13 +47,37 @@
 
         <section class="content-section" aria-labelledby="contact-form">
             <h2 id="contact-form">Send us a Message</h2>
-            <form action="#" method="POST">
+
+            <div id="formMessage"
+                style="display: none; padding: 1rem; margin-bottom: 1rem; border-radius: 4px; font-weight: bold;"></div>
+
+            <form action="../includes/process_contact.php" method="POST">
                 <input type="text" name="name" placeholder="Your Full Name" required>
                 <input type="email" name="email" placeholder="Your Email" required>
                 <textarea name="message" rows="5" placeholder="How can we help you?" required></textarea>
                 <button type="submit" class="btn">Send Message</button>
             </form>
         </section>
+
+        <script>
+            const urlParams = new URLSearchParams(window.location.search);
+            const msgDiv = document.getElementById('formMessage');
+
+            if (urlParams.has('status')) {
+                msgDiv.style.display = 'block';
+                if (urlParams.get('status') === 'success') {
+                    msgDiv.style.backgroundColor = '#d4edda';
+                    msgDiv.style.color = '#155724';
+                    msgDiv.style.border = '1px solid #c3e6cb';
+                    msgDiv.textContent = 'Thank you! Your message has been saved successfully.';
+                } else if (urlParams.get('status') === 'error') {
+                    msgDiv.style.backgroundColor = '#f8d7da';
+                    msgDiv.style.color = '#721c24';
+                    msgDiv.style.border = '1px solid #f5c6cb';
+                    msgDiv.textContent = 'Error processing your request. Please ensure all inputs are valid.';
+                }
+            }
+        </script>
 
     </main>
 
