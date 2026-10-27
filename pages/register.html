@@ -48,7 +48,10 @@
         <section class="content-section" aria-labelledby="register-form">
             <h2 id="register-form">Create an Account</h2>
 
-            <form id="regForm" novalidate>
+            <div id="formMessage"
+                style="display: none; padding: 1rem; margin-bottom: 1rem; border-radius: 4px; font-weight: bold;"></div>
+
+            <form id="regForm" action="../includes/process_register.php" method="POST" novalidate>
                 <div class="form-group">
                     <label for="fullName">Full Name</label>
                     <input type="text" id="fullName" name="fullName" aria-describedby="nameErr">
@@ -130,6 +133,34 @@
                 <button type="submit" class="btn">Register</button>
             </form>
         </section>
+
+        <script src="../assets/js/validation.js"></script>
+        <script>
+            const urlParams = new URLSearchParams(window.location.search);
+            const msgDiv = document.getElementById('formMessage');
+
+            if (urlParams.has('status')) {
+                msgDiv.style.display = 'block';
+                const status = urlParams.get('status');
+                const msg = urlParams.get('msg');
+
+                if (status === 'success') {
+                    msgDiv.style.backgroundColor = '#d4edda';
+                    msgDiv.style.color = '#155724';
+                    msgDiv.style.border = '1px solid #c3e6cb';
+                    msgDiv.textContent = 'Registration successful! You can now log in.';
+                } else if (status === 'error') {
+                    msgDiv.style.backgroundColor = '#f8d7da';
+                    msgDiv.style.color = '#721c24';
+                    msgDiv.style.border = '1px solid #f5c6cb';
+                    if (msg === 'duplicate_email') {
+                        msgDiv.textContent = 'This email is already registered. Please log in.';
+                    } else {
+                        msgDiv.textContent = 'Error processing registration. Please check your inputs.';
+                    }
+                }
+            }
+        </script>
 
         <script src="../assets/js/validation.js"></script>
 

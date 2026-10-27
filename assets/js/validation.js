@@ -172,11 +172,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
             if (isValid) {
-                alert('Registration successful!');
-                form.reset();
-                meter.style.width = '0%';
-                document.querySelectorAll('.input-success').forEach(el => el.classList.remove('input-success'));
-                generateCaptcha();
+                form.submit();
             }
         });
     }
