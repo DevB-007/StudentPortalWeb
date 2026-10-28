@@ -12,7 +12,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $password = $_POST["password"];
 
     if (empty($fullName) || empty($email) || empty($password) || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        header("Location: ../pages/register.html?status=error&msg=invalid_input");
+        header("Location: ../pages/register.php?status=error&msg=invalid_input");
         exit();
     }
 
@@ -23,7 +23,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if ($stmt->num_rows > 0) {
         $stmt->close();
-        header("Location: ../pages/register.html?status=error&msg=duplicate_email");
+        header("Location: ../pages/register.php?status=error&msg=duplicate_email");
         exit();
     }
     $stmt->close();
@@ -35,16 +35,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if ($insertStmt->execute()) {
         $insertStmt->close();
-        header("Location: ../pages/register.html?status=success");
+        header("Location: ../pages/register.php?status=success");
         exit();
     } else {
         $insertStmt->close();
-        header("Location: ../pages/register.html?status=error&msg=db_error");
+        header("Location: ../pages/register.php?status=error&msg=db_error");
         exit();
     }
 
 } else {
-    header("Location: ../pages/register.html");
+    header("Location: ../pages/register.php");
     exit();
 }
 ?>
