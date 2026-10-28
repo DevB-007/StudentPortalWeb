@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="StudentHub - The ultimate portal for campus events and student management.">
-    <title>Noticeboard | StudentHub</title>
+    <title>Event Sign-Up | StudentHub</title>
 
     <link rel="stylesheet" href="../assets/css/style.css">
 </head>
@@ -29,11 +30,23 @@
 
         <nav aria-label="Main Navigation">
             <ul>
-                <li><a href="home.html">Home</a></li>
-                <li><a href="events.html">Campus Events</a></li>
-                <li><a href="directory.html">Student Directory</a></li>
-                <li><a href="faq.html">FAQ / Help</a></li>
-                <li><a href="login.html" class="btn-login">Login</a></li>
+                <li><a href="home.php">Home</a></li>
+                <li><a href="events.php">Campus Events</a></li>
+                <li><a href="directory.php">Directory</a></li>
+                
+                <?php if(isset($_SESSION['user_id'])): ?>
+                    <!-- If user IS logged in -->
+                    <?php if($_SESSION['role'] === 'admin'): ?>
+                        <li><a href="admin_students.php">Admin Panel</a></li>
+                    <?php else: ?>
+                        <li><a href="dashboard.php">Dashboard</a></li>
+                    <?php endif; ?>
+                    <li><a href="../includes/logout.php" class="btn-login" style="background-color: #dc3545;">Logout</a></li>
+                
+                <?php else: ?>
+                    <!-- If user is NOT logged in -->
+                    <li><a href="login.php" class="btn-login">Login</a></li>
+                <?php endif; ?>
             </ul>
         </nav>
     </header>
@@ -41,13 +54,13 @@
     <main id="main-content">
 
         <section class="page-header">
-            <h1>Live Noticeboard</h1>
+            <h1>Event Registration</h1>
             <p>Your central portal for campus life, events, and resources.</p>
         </section>
 
-        <section class="content-section" aria-labelledby="live-feed">
-            <h2 id="live-feed">Campus Announcements</h2>
-            <p>Dynamic announcements fetched from external data will be displayed here.</p>
+        <section class="content-section" aria-labelledby="event-signup">
+            <h2 id="event-signup">Sign Up for an Event</h2>
+            <p>A dedicated form for students to register for specific campus events will go here.</p>
         </section>
 
     </main>
@@ -58,9 +71,9 @@
 
             <nav aria-label="Footer Navigation">
                 <ul>
-                    <li><a href="about.html">About Us</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                    <li><a href="privacy.html">Privacy Policy</a></li>
+                    <li><a href="about.php">About Us</a></li>
+                    <li><a href="contact.php">Contact</a></li>
+                    <li><a href="privacy.php">Privacy Policy</a></li>
                 </ul>
             </nav>
         </div>

@@ -6,14 +6,14 @@ $timeout_duration = 1800;
 if (isset($_SESSION['last_activity']) && (time() - $_SESSION['last_activity']) > $timeout_duration) {
     session_unset();
     session_destroy();
-    header("Location: login.html?status=timeout");
+    header("Location: login.php?status=timeout");
     exit();
 }
 
 $_SESSION['last_activity'] = time();
 
 if (!isset($_SESSION['user_id'])) {
-    header("Location: login.html?status=unauthorized");
+    header("Location: login.php?status=unauthorized");
     exit();
 }
 ?>
@@ -52,10 +52,10 @@ if (!isset($_SESSION['user_id'])) {
                 <p>Your central portal for campus life, events, and resources.</p>
             </section>
             <ul>
-                <li><a href="home.html">Home</a></li>
-                <li><a href="events.html">Campus Events</a></li>
-                <li><a href="directory.html">Student Directory</a></li>
-                <li><a href="faq.html">FAQ / Help</a></li>
+                <li><a href="home.php">Home</a></li>
+                <li><a href="events.php">Campus Events</a></li>
+                <li><a href="directory.php">Student Directory</a></li>
+                <li><a href="faq.php">FAQ / Help</a></li>
                 <li><a href="../includes/logout.php" class="btn-login">Logout</a></li>
             </ul>
         </nav>
@@ -81,9 +81,9 @@ if (!isset($_SESSION['user_id'])) {
 
             <nav aria-label="Footer Navigation">
                 <ul>
-                    <li><a href="about.html">About Us</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                    <li><a href="privacy.html">Privacy Policy</a></li>
+                    <li><a href="about.php">About Us</a></li>
+                    <li><a href="contact.php">Contact</a></li>
+                    <li><a href="privacy.php">Privacy Policy</a></li>
                 </ul>
             </nav>
         </div>

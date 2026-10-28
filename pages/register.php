@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -29,11 +30,23 @@
 
         <nav aria-label="Main Navigation">
             <ul>
-                <li><a href="home.html">Home</a></li>
-                <li><a href="events.html">Campus Events</a></li>
-                <li><a href="directory.html">Student Directory</a></li>
-                <li><a href="faq.html">FAQ / Help</a></li>
-                <li><a href="login.html" class="btn-login">Login</a></li>
+                <li><a href="home.php">Home</a></li>
+                <li><a href="events.php">Campus Events</a></li>
+                <li><a href="directory.php">Directory</a></li>
+                
+                <?php if(isset($_SESSION['user_id'])): ?>
+                    <!-- If user IS logged in -->
+                    <?php if($_SESSION['role'] === 'admin'): ?>
+                        <li><a href="admin_students.php">Admin Panel</a></li>
+                    <?php else: ?>
+                        <li><a href="dashboard.php">Dashboard</a></li>
+                    <?php endif; ?>
+                    <li><a href="../includes/logout.php" class="btn-login" style="background-color: #dc3545;">Logout</a></li>
+                
+                <?php else: ?>
+                    <!-- If user is NOT logged in -->
+                    <li><a href="login.php" class="btn-login">Login</a></li>
+                <?php endif; ?>
             </ul>
         </nav>
     </header>
@@ -170,9 +183,9 @@
 
             <nav aria-label="Footer Navigation">
                 <ul>
-                    <li><a href="about.html">About Us</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                    <li><a href="privacy.html">Privacy Policy</a></li>
+                    <li><a href="about.php">About Us</a></li>
+                    <li><a href="contact.php">Contact</a></li>
+                    <li><a href="privacy.php">Privacy Policy</a></li>
                 </ul>
             </nav>
         </div>

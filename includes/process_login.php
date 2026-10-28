@@ -23,7 +23,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $_SESSION['last_activity'] = time();
 
             if ($user['role'] === 'admin') {
-                header("Location: ../pages/admin.html");
+                header("Location: ../pages/admin.php");
             } else {
                 header("Location: ../pages/dashboard.php");
             }
