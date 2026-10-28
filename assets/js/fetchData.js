@@ -19,7 +19,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 renderEvents();
             }
 
-            const response = await fetch('../assets/data/events.json');
+            // Change this line inside fetchEvents():
+            const response = await fetch('../includes/api_events.php');
             if (!response.ok) throw new Error('Network response was not ok');
             
             const data = await response.json();
@@ -68,10 +69,12 @@ document.addEventListener('DOMContentLoaded', () => {
             card.style.backgroundColor = 'var(--bg-light)';
             
             card.innerHTML = `
-                <h3 style="margin-bottom: 0.5rem; color: var(--primary);">${event.title}</h3>
-                <p style="font-size: 0.9rem; margin-bottom: 0.25rem;"><strong>Category:</strong> ${event.category}</p>
-                <p style="font-size: 0.9rem; margin-bottom: 1rem;"><strong>Date:</strong> ${event.date}</p>
-                <a href="event-register.php" class="btn" style="width: 100%; padding: 0.5rem;">Register</a>
+            ${event.poster_image ? `<img src="../assets/uploads/posters/${event.poster_image}" alt="Event Poster" style="width: 100%; height: 150px; object-fit: cover; border-radius: 4px; margin-bottom: 0.5rem;">` : ''}
+            <h3 style="margin-bottom: 0.5rem; color: var(--primary);">${event.title}</h3>
+            <p style="font-size: 0.9rem; margin-bottom: 0.25rem;"><strong>Category:</strong> ${event.category}</p>
+            <p style="font-size: 0.9rem; margin-bottom: 0.25rem;"><strong>Date:</strong> ${event.date}</p>
+            <p style="font-size: 0.85rem; margin-bottom: 1rem; color: #555;">${event.description ? event.description.substring(0, 60) + '...' : ''}</p>
+            <a href="event-register.html" class="btn" style="width: 100%; padding: 0.5rem; display: block; text-align: center;">Register</a>
             `;
             container.appendChild(card);
         });
