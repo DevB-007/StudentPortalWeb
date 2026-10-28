@@ -71,7 +71,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 <h3 style="margin-bottom: 0.5rem; color: var(--primary);">${event.title}</h3>
                 <p style="font-size: 0.9rem; margin-bottom: 0.25rem;"><strong>Category:</strong> ${event.category}</p>
                 <p style="font-size: 0.9rem; margin-bottom: 1rem;"><strong>Date:</strong> ${event.date}</p>
-                <a href="event-register.html" class="btn" style="width: 100%; padding: 0.5rem;">Register</a>
+                <a href="event-register.php" class="btn" style="width: 100%; padding: 0.5rem;">Register</a>
             `;
             container.appendChild(card);
         });

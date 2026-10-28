@@ -51,7 +51,8 @@ $result = $stmt->get_result();
         <nav aria-label="Main Navigation">
             <ul>
                 <li><a href="home.php">Home</a></li>
-                <li><a href="admin_students.php" aria-current="page">Manage Students</a></li>
+                <li><a href="admin_students.php">Manage Students</a></li>
+                <li><a href="admin_events.php">Manage Events</a></li>
                 <li><a href="../includes/logout.php" class="btn-login" style="background-color: #dc3545;">Logout</a></li>
             </ul>
         </nav>
@@ -98,7 +99,7 @@ $result = $stmt->get_result();
                                     <td style="padding: 0.75rem; border: 1px solid var(--border);"><?php echo htmlspecialchars($row['course']); ?></td>
                                     <td style="padding: 0.75rem; border: 1px solid var(--border);">
                                         <a href="edit_student.php?id=<?php echo $row['id']; ?>" class="btn" style="padding: 0.25rem 0.5rem; font-size: 0.85rem; background-color: #ffc107; color: black;">Edit</a>
-                                        <a href="../includes/delete_student.php?id=<?php echo $row['id']; ?>" class="btn" style="padding: 0.25rem 0.5rem; font-size: 0.85rem; background-color: #dc3545;" onclick="return confirm('Are you sure you want to delete this student record? This action cannot be undone.');">Delete</a>
+                                        <a href="../includes/delete_student.php?id=<?php echo $row['id']; ?>" class="btn" style="padding: 0.25rem 0.5rem; font-size: 0.85rem; background-color: #dc3545;" onclick="return confirm('Are you sure you want to delete this student?');">Delete</a>
                                     </td>
                                 </tr>
                             <?php endwhile; ?>

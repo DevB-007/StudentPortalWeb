@@ -36,6 +36,7 @@
                     <!-- If user IS logged in -->
                     <?php if($_SESSION['role'] === 'admin'): ?>
                         <li><a href="admin_students.php">Admin Panel</a></li>
+                        <li><a href="admin.php">System Stats</a></li>
                     <?php else: ?>
                         <li><a href="dashboard.php">Dashboard</a></li>
                     <?php endif; ?>

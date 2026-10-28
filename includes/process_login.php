@@ -31,7 +31,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
     }
     
-    header("Location: ../pages/login.html?status=invalid");
+    header("Location: ../pages/login.php?status=invalid");
     exit();
 }
 ?>

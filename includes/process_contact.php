@@ -30,14 +30,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         fputcsv($file, $fileData);
         fclose($file);
         
-        header("Location: ../pages/contact.html?status=success");
+        header("Location: ../pages/contact.php?status=success");
         exit();
     } else {
-        header("Location: ../pages/contact.html?status=error");
+        header("Location: ../pages/contact.php?status=error");
         exit();
     }
 } else {
-    header("Location: ../pages/contact.html");
+    header("Location: ../pages/contact.php");
     exit();
 }
 ?>
