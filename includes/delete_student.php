@@ -14,6 +14,14 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
     $stmt->bind_param("i", $student_id);
     
     if ($stmt->execute()) {
+        // Generate Audit Log
+        $action = "Deleted Student ID: " . $student_id;
+        $admin_name = $_SESSION['full_name'];
+        $log_stmt = $conn->prepare("INSERT INTO audit_logs (action, user_name) VALUES (?, ?)");
+        $log_stmt->bind_param("ss", $action, $admin_name);
+        $log_stmt->execute();
+        $log_stmt->close();
+        
         header("Location: ../pages/admin_students.php?status=deleted");
     } else {
         header("Location: ../pages/admin_students.php?status=error");
