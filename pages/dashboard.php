@@ -1,3 +1,22 @@
+<?php
+session_start();
+
+$timeout_duration = 1800;
+
+if (isset($_SESSION['last_activity']) && (time() - $_SESSION['last_activity']) > $timeout_duration) {
+    session_unset();
+    session_destroy();
+    header("Location: login.html?status=timeout");
+    exit();
+}
+
+$_SESSION['last_activity'] = time();
+
+if (!isset($_SESSION['user_id'])) {
+    header("Location: login.html?status=unauthorized");
+    exit();
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -28,12 +47,16 @@
         </button>
 
         <nav aria-label="Main Navigation">
+            <section class="page-header">
+                <h1>Welcome back, <?php echo htmlspecialchars($_SESSION['full_name']); ?>!</h1>
+                <p>Your central portal for campus life, events, and resources.</p>
+            </section>
             <ul>
                 <li><a href="home.html">Home</a></li>
                 <li><a href="events.html">Campus Events</a></li>
                 <li><a href="directory.html">Student Directory</a></li>
                 <li><a href="faq.html">FAQ / Help</a></li>
-                <li><a href="login.html" class="btn-login">Login</a></li>
+                <li><a href="../includes/logout.php" class="btn-login">Logout</a></li>
             </ul>
         </nav>
     </header>
